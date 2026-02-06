@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A portfolio showcasing technical accessibility enhancements and WCAG compliance best practices">
+    <title>Accessible Web Design Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation Header -->
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1><a href="index.html">Accessible Design</a></h1>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="nav-menu" class="nav-list" aria-label="Navigation menu">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#components">Components</a></li>
+                    <li><a href="#testing">Testing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-label="Welcome section">
+            <div class="container">
+                <h2>Accessible Web Design in Practice</h2>
+                <p class="lead">A showcase of technical accessibility enhancements and WCAG 2.1 AA compliance</p>
+                <a href="#features" class="btn btn-primary">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features" aria-labelledby="features-heading">
+            <div class="container">
+                <h2 id="features-heading">Accessibility Features</h2>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <h3><svg aria-hidden="true" class="icon">⌨️</svg> Keyboard Navigation</h3>
+                        <p>Full keyboard navigation support with visible focus indicators. Tab through all interactive elements.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3><svg aria-hidden="true" class="icon">🔊</svg> Screen Reader Support</h3>
+                        <p>Semantic HTML and ARIA labels ensure screen reader users have full access to content and functionality.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3><svg aria-hidden="true" class="icon">🎨</svg> Color Contrast</h3>
+                        <p>All text meets WCAG AA standards for color contrast (4.5:1 for normal text, 3:1 for large text).</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3><svg aria-hidden="true" class="icon">📝</svg> Form Accessibility</h3>
+                        <p>Properly labeled form inputs with clear error messages and helpful validation feedback.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3><svg aria-hidden="true" class="icon">🎯</svg> Focus Management</h3>
+                        <p>Logical focus order and focus trapping in modals. Clear visual focus indicators throughout.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3><svg aria-hidden="true" class="icon">📊</svg> Semantic HTML</h3>
+                        <p>Proper heading hierarchy and semantic tags (nav, main, section, article) for document structure.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section id="components" class="components" aria-labelledby="components-heading">
+            <div class="container">
+                <h2 id="components-heading">Interactive Components</h2>
+
+                <!-- Form Example -->
+                <article class="component-demo">
+                    <h3>Accessible Form</h3>
+                    <form id="demo-form" aria-labelledby="form-title">
+                        <p id="form-title" class="sr-only">Contact form example with proper labels and error handling</p>
+                        
+                        <div class="form-group">
+                            <label for="name">Name <span aria-label="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required 
+                                aria-describedby="name-help"
+                            >
+                            <small id="name-help">Your full name</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email <span aria-label="required">*</span></label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required 
+                                aria-describedby="email-help"
+                            >
+                            <small id="email-help">We'll never share your email</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message <span aria-label="required">*</span></label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="5" 
+                                required 
+                                aria-describedby="message-help"
+                            ></textarea>
+                            <small id="message-help">Please provide details (minimum 10 characters)</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div id="form-status" aria-live="polite" aria-atomic="true"></div>
+                    </form>
+                </article>
+
+                <!-- Accordion Example -->
+                <article class="component-demo">
+                    <h3>Accessible Accordion</h3>
+                    <div class="accordion" role="region" aria-label="Accordion example">
+                        <button 
+                            class="accordion-trigger" 
+                            aria-expanded="false" 
+                            aria-controls="panel-1"
+                            id="accordion-1"
+                        >
+                            What is WCAG?
+                        </button>
+                        <div id="panel-1" class="accordion-panel" role="region" aria-labelledby="accordion-1">
+                            <p>WCAG (Web Content Accessibility Guidelines) are guidelines for making web content more accessible to people with disabilities.</p>
+                        </div>
+
+                        <button 
+                            class="accordion-trigger" 
+                            aria-expanded="false" 
+                            aria-controls="panel-2"
+                            id="accordion-2"
+                        >
+                            What keyboard shortcuts are available?
+                        </button>
+                        <div id="panel-2" class="accordion-panel" role="region" aria-labelledby="accordion-2">
+                            <p>Use <kbd>Tab</kbd> to navigate between buttons. Use <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button. Use arrow keys within accordions for navigation.</p>
+                        </div>
+
+                        <button 
+                            class="accordion-trigger" 
+                            aria-expanded="false" 
+                            aria-controls="panel-3"
+                            id="accordion-3"
+                        >
+                            How can I test for accessibility?
+                        </button>
+                        <div id="panel-3" class="accordion-panel" role="region" aria-labelledby="accordion-3">
+                            <p>Use automated tools like axe, WAVE, or Lighthouse. Also perform manual testing with keyboard navigation and screen readers like NVDA or JAWS.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Table Example -->
+                <article class="component-demo">
+                    <h3>Accessible Data Table</h3>
+                    <div class="table-wrapper" role="region" aria-labelledby="table-title">
+                        <table>
+                            <caption id="table-title">WCAG Compliance Levels</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Level</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Priority</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Level"><strong>Level A</strong></td>
+                                    <td data-label="Description">Basic accessibility features</td>
+                                    <td data-label="Priority">Essential</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Level"><strong>Level AA</strong></td>
+                                    <td data-label="Description">Enhanced accessibility, recommended standard</td>
+                                    <td data-label="Priority">Recommended</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Level"><strong>Level AAA</strong></td>
+                                    <td data-label="Description">Advanced accessibility features</td>
+                                    <td data-label="Priority">Enhanced</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- Modal Example -->
+                <article class="component-demo">
+                    <h3>Accessible Modal Dialog</h3>
+                    <button class="btn btn-secondary" id="modal-trigger" aria-label="Open accessibility resources modal">
+                        Open Resources
+                    </button>
+                    
+                    <div 
+                        id="modal" 
+                        class="modal" 
+                        role="dialog" 
+                        aria-modal="true" 
+                        aria-labelledby="modal-title"
+                        hidden
+                    >
+                        <div class="modal-content">
+                            <button class="modal-close" aria-label="Close modal">×</button>
+                            <h3 id="modal-title">Accessibility Resources</h3>
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1 Quick Reference</a></li>
+                                <li><a href="https://www.w3.org/WAI/intro/aria" target="_blank" rel="noopener noreferrer">ARIA Basics</a></li>
+                                <li><a href="https://www.a11y-101.com/" target="_blank" rel="noopener noreferrer">A11y 101</a></li>
+                                <li><a href="https://www.webbrewers.org/" target="_blank" rel="noopener noreferrer">WebAIM</a></li>
+                            </ul>
+                        </div>
+                        <div class="modal-overlay"></div>
+                    </div>
+                </article>
+
+                <!-- Tooltip Example -->
+                <article class="component-demo">
+                    <h3>Accessible Tooltips</h3>
+                    <p>Hover or focus on the icons below for accessible tooltips:</p>
+                    <div class="tooltip-group">
+                        <button 
+                            class="tooltip-trigger" 
+                            aria-label="Information"
+                            data-tooltip="This is helpful information"
+                        >
+                            ℹ️
+                        </button>
+                        <button 
+                            class="tooltip-trigger" 
+                            aria-label="Warning"
+                            data-tooltip="This is a warning message"
+                        >
+                            ⚠️
+                        </button>
+                        <button 
+                            class="tooltip-trigger" 
+                            aria-label="Success"
+                            data-tooltip="This is a success message"
+                        >
+                            ✓
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Testing Section -->
+        <section id="testing" class="testing" aria-labelledby="testing-heading">
+            <div class="container">
+                <h2 id="testing-heading">Accessibility Testing</h2>
+                <div class="testing-content">
+                    <article>
+                        <h3>Manual Testing Checklist</h3>
+                        <ul>
+                            <li>Navigate entire page using <kbd>Tab</kbd> and <kbd>Shift+Tab</kbd></li>
+                            <li>Verify <code>focus</code> indicator is visible on all interactive elements</li>
+                            <li>Check that focus order is logical and intuitive</li>
+                            <li>Use browser DevTools to inspect ARIA attributes</li>
+                            <li>Test with screen reader software (NVDA, JAWS, VoiceOver)</li>
+                            <li>Zoom page to 200% and verify layout remains usable</li>
+                            <li>Check color contrast with a tool like WebAIM Contrast Checker</li>
+                        </ul>
+                    </article>
+
+                    <article>
+                        <h3>Automated Testing Tools</h3>
+                        <ul>
+                            <li><strong>axe DevTools</strong> - Browser extension for accessibility testing</li>
+                            <li><strong>WAVE</strong> - Web accessibility evaluation tool</li>
+                            <li><strong>Lighthouse</strong> - Built into Chrome DevTools</li>
+                            <li><strong>NVDA</strong> - Free screen reader for Windows</li>
+                            <li><strong>WebAIM Contrast Checker</strong> - Color contrast validation</li>
+                            <li><strong>Keyboard Navigation Tester</strong> - Test keyboard navigation flows</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading">Get in Touch</h2>
+                <p>Have questions about accessibility? I'd love to hear from you!</p>
+                <div class="contact-links">
+                    <a href="https://github.com/mendelcrrll" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
+                        GitHub
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Twitter profile">
+                        Twitter
+                    </a>
+                    <a href="mailto:your-email@example.com" aria-label="Send email">
+                        Email
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2024 Accessible Web Design Portfolio. Built with accessibility in mind.</p>
+            <p>
+                <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">
+                    WCAG 2.1 Compliance (Level AA)
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
