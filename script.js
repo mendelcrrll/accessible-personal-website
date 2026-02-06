@@ -186,6 +186,8 @@ function initModal() {
     const modal = document.getElementById('modal');
     const trigger = document.getElementById('modal-trigger');
     const closeBtn = document.querySelector('.modal-close');
+    const overlay = modal.querySelector('.modal-overlay');
+    const modalContent = modal.querySelector('.modal-content');
 
     if (!modal || !trigger) return;
 
@@ -193,9 +195,11 @@ function initModal() {
         openModal(modal, trigger);
     });
 
-    closeBtn.addEventListener('click', () => {
-        closeModal(modal, trigger);
-    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            closeModal(modal, trigger);
+        });
+    }
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
@@ -205,14 +209,18 @@ function initModal() {
     });
 
     // Close on overlay click
-    document.querySelector('.modal-overlay').addEventListener('click', () => {
-        closeModal(modal, trigger);
-    });
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            closeModal(modal, trigger);
+        });
+    }
 
     // Prevent closing when clicking inside modal content
-    document.querySelector('.modal-content').addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
+    if (modalContent) {
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
 
     // Trap focus in modal
     modal.addEventListener('keydown', trapFocus);

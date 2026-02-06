@@ -611,7 +611,8 @@ tbody tr:hover {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+    z-index: 1000; /* place overlay above page but below modal content */
+    pointer-events: auto;
 }
 
 .modal-content {
@@ -624,6 +625,7 @@ tbody tr:hover {
     overflow-y: auto;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     position: relative;
+    z-index: 1001; /* ensure content is above the overlay */
 }
 
 .modal-close {
