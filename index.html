@@ -3,332 +3,467 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A portfolio showcasing technical accessibility enhancements and WCAG compliance best practices">
-    <title>Accessible Web Design Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Menachem Carroll - Computer Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .headshot {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .headshot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: #333;
+            padding: 0;
+            z-index: 50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background: #667eea;
+            outline: none;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-info a:hover,
+        .contact-info a:focus {
+            text-decoration: underline;
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover,
+        .project-card:focus-within {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .project-card button:hover,
+        .project-card button:focus {
+            background: #764ba2;
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #667eea;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #764ba2;
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                border-bottom: 1px solid #555;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Focus visible for keyboard navigation */
+        *:focus-visible {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+
+    </style>
 </head>
 <body>
-    <!-- Skip link for keyboard users -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a class="skip-link" href="#content">Skip to main content</a>
 
-    <!-- Navigation Header -->
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <div class="container">
-                <div class="nav-brand">
-                    <h1><a href="index.html">Accessible Design</a></h1>
-                </div>
-                <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul id="nav-menu" class="nav-list" aria-label="Navigation menu">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#components">Components</a></li>
-                    <li><a href="#testing">Testing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
+    <header>
+        <img src="Headshot.png" alt="Menachem Carroll headshot" class="headshot" onclick="openModal('headshotModal')" role="button" tabindex="0" onkeypress="if(event.key==='Enter') openModal('headshotModal')">
+        <div>
+            <h1>Menachem Carroll</h1>
+            <p>Computer Engineer | Systems Programming | Accessible Technology</p>
+        </div>
     </header>
 
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" aria-label="Welcome section">
-            <div class="container">
-                <h2>Accessible Web Design in Practice</h2>
-                <p class="lead">A showcase of technical accessibility enhancements and WCAG 2.1 AA compliance</p>
-                <a href="#features" class="btn btn-primary">Learn More</a>
-            </div>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="content" role="main">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Computer engineering student at the University of Washington with a passion for accessible technology and systems programming. I bring experience in e-commerce, nonprofit tech, and education, driven by building tools that create real impact.</p>
+            <p style="margin-top: 1rem;">Outside of work and school, I'm passionate about triathlons and finding creative applications of technology to solve everyday problems.</p>
         </section>
 
-        <!-- Features Section -->
-        <section id="features" class="features" aria-labelledby="features-heading">
-            <div class="container">
-                <h2 id="features-heading">Accessibility Features</h2>
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <h3><svg aria-hidden="true" class="icon">⌨️</svg> Keyboard Navigation</h3>
-                        <p>Full keyboard navigation support with visible focus indicators. Tab through all interactive elements.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3><svg aria-hidden="true" class="icon">🔊</svg> Screen Reader Support</h3>
-                        <p>Semantic HTML and ARIA labels ensure screen reader users have full access to content and functionality.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3><svg aria-hidden="true" class="icon">🎨</svg> Color Contrast</h3>
-                        <p>All text meets WCAG AA standards for color contrast (4.5:1 for normal text, 3:1 for large text).</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3><svg aria-hidden="true" class="icon">📝</svg> Form Accessibility</h3>
-                        <p>Properly labeled form inputs with clear error messages and helpful validation feedback.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3><svg aria-hidden="true" class="icon">🎯</svg> Focus Management</h3>
-                        <p>Logical focus order and focus trapping in modals. Clear visual focus indicators throughout.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3><svg aria-hidden="true" class="icon">📊</svg> Semantic HTML</h3>
-                        <p>Proper heading hierarchy and semantic tags (nav, main, section, article) for document structure.</p>
-                    </article>
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="grid">
+                <div class="project-card">
+                    <h3>Teaching Assistant, CSE333</h3>
+                    <p><strong>University of Washington</strong> (Jan 2026 – Present)</p>
+                    <p>Lead discussion sections and office hours on systems programming concepts and C/C++ development.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Teaching Assistant, CSE351</h3>
+                    <p><strong>University of Washington</strong> (Mar 2025 – Dec 2025)</p>
+                    <p>Led discussion sections and office hours on assembly and memory architecture.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Nonprofit Technology Advisor</h3>
+                    <p><strong>Community Homes</strong> (Jun 2024 – Present)</p>
+                    <p>Built tech solutions to match adults with disabilities to family homes.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Owner/Operator</h3>
+                    <p><strong>Ecom Consulting LLC</strong> (Mar 2022 – Present)</p>
+                    <p>Designed and implemented business performance tech solutions for e-commerce.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Components Section -->
-        <section id="components" class="components" aria-labelledby="components-heading">
-            <div class="container">
-                <h2 id="components-heading">Interactive Components</h2>
-
-                <!-- Form Example -->
-                <article class="component-demo">
-                    <h3>Accessible Form</h3>
-                    <form id="demo-form" aria-labelledby="form-title">
-                        <p id="form-title" class="sr-only">Contact form example with proper labels and error handling</p>
-                        
-                        <div class="form-group">
-                            <label for="name">Name <span aria-label="required">*</span></label>
-                            <input 
-                                type="text" 
-                                id="name" 
-                                name="name" 
-                                required 
-                                aria-describedby="name-help"
-                            >
-                            <small id="name-help">Your full name</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email <span aria-label="required">*</span></label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                required 
-                                aria-describedby="email-help"
-                            >
-                            <small id="email-help">We'll never share your email</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message <span aria-label="required">*</span></label>
-                            <textarea 
-                                id="message" 
-                                name="message" 
-                                rows="5" 
-                                required 
-                                aria-describedby="message-help"
-                            ></textarea>
-                            <small id="message-help">Please provide details (minimum 10 characters)</small>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                        <div id="form-status" aria-live="polite" aria-atomic="true"></div>
-                    </form>
-                </article>
-
-                <!-- Accordion Example -->
-                <article class="component-demo">
-                    <h3>Accessible Accordion</h3>
-                    <div class="accordion" role="region" aria-label="Accordion example">
-                        <button 
-                            class="accordion-trigger" 
-                            aria-expanded="false" 
-                            aria-controls="panel-1"
-                            id="accordion-1"
-                        >
-                            What is WCAG?
-                        </button>
-                        <div id="panel-1" class="accordion-panel" role="region" aria-labelledby="accordion-1">
-                            <p>WCAG (Web Content Accessibility Guidelines) are guidelines for making web content more accessible to people with disabilities.</p>
-                        </div>
-
-                        <button 
-                            class="accordion-trigger" 
-                            aria-expanded="false" 
-                            aria-controls="panel-2"
-                            id="accordion-2"
-                        >
-                            What keyboard shortcuts are available?
-                        </button>
-                        <div id="panel-2" class="accordion-panel" role="region" aria-labelledby="accordion-2">
-                            <p>Use <kbd>Tab</kbd> to navigate between buttons. Use <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button. Use arrow keys within accordions for navigation.</p>
-                        </div>
-
-                        <button 
-                            class="accordion-trigger" 
-                            aria-expanded="false" 
-                            aria-controls="panel-3"
-                            id="accordion-3"
-                        >
-                            How can I test for accessibility?
-                        </button>
-                        <div id="panel-3" class="accordion-panel" role="region" aria-labelledby="accordion-3">
-                            <p>Use automated tools like axe, WAVE, or Lighthouse. Also perform manual testing with keyboard navigation and screen readers like NVDA or JAWS.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Table Example -->
-                <article class="component-demo">
-                    <h3>Accessible Data Table</h3>
-                    <div class="table-wrapper" role="region" aria-labelledby="table-title">
-                        <table>
-                            <caption id="table-title">WCAG Compliance Levels</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Level</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Priority</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-label="Level"><strong>Level A</strong></td>
-                                    <td data-label="Description">Basic accessibility features</td>
-                                    <td data-label="Priority">Essential</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Level"><strong>Level AA</strong></td>
-                                    <td data-label="Description">Enhanced accessibility, recommended standard</td>
-                                    <td data-label="Priority">Recommended</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Level"><strong>Level AAA</strong></td>
-                                    <td data-label="Description">Advanced accessibility features</td>
-                                    <td data-label="Priority">Enhanced</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </article>
-
-                <!-- Modal Example -->
-                <article class="component-demo">
-                    <h3>Accessible Modal Dialog</h3>
-                    <button class="btn btn-secondary" id="modal-trigger" aria-label="Open accessibility resources modal">
-                        Open Resources
-                    </button>
-                    
-                    <div 
-                        id="modal" 
-                        class="modal" 
-                        role="dialog" 
-                        aria-modal="true" 
-                        aria-labelledby="modal-title"
-                        hidden
-                    >
-                        <div class="modal-content">
-                            <button class="modal-close" aria-label="Close modal">×</button>
-                            <h3 id="modal-title">Accessibility Resources</h3>
-                            <ul>
-                                <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1 Quick Reference</a></li>
-                                <li><a href="https://www.w3.org/WAI/intro/aria" target="_blank" rel="noopener noreferrer">ARIA Basics</a></li>
-                                <li><a href="https://www.a11y-101.com/" target="_blank" rel="noopener noreferrer">A11y 101</a></li>
-                                <li><a href="https://www.webbrewers.org/" target="_blank" rel="noopener noreferrer">WebAIM</a></li>
-                            </ul>
-                        </div>
-                        <div class="modal-overlay"></div>
-                    </div>
-                </article>
-
-                <!-- Tooltip Example -->
-                <article class="component-demo">
-                    <h3>Accessible Tooltips</h3>
-                    <p>Hover or focus on the icons below for accessible tooltips:</p>
-                    <div class="tooltip-group">
-                        <button 
-                            class="tooltip-trigger" 
-                            aria-label="Information"
-                            data-tooltip="This is helpful information"
-                        >
-                            ℹ️
-                        </button>
-                        <button 
-                            class="tooltip-trigger" 
-                            aria-label="Warning"
-                            data-tooltip="This is a warning message"
-                        >
-                            ⚠️
-                        </button>
-                        <button 
-                            class="tooltip-trigger" 
-                            aria-label="Success"
-                            data-tooltip="This is a success message"
-                        >
-                            ✓
-                        </button>
-                    </div>
-                </article>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="project-card">
+                    <h3>Mini Google Search Engine</h3>
+                    <p>Built a scalable search engine prototype implementing core ranking algorithms and indexing techniques.</p>
+                    <button type="button" onclick="openModal('project1')">Learn More</button>
+                </div>
+                <div class="project-card">
+                    <h3>FPGA Flappy Bird</h3>
+                    <p>Implemented classic game on FPGA using hardware description language and real-time graphics rendering.</p>
+                    <button type="button" onclick="openModal('project2')">Learn More</button>
+                </div>
+                <div class="project-card">
+                    <h3>ASR System for CP</h3>
+                    <p>Developed automatic speech recognition system optimized for cerebral palsy users, focusing on accessibility.</p>
+                    <button type="button" onclick="openModal('project3')">Learn More</button>
+                </div>
             </div>
         </section>
 
-        <!-- Testing Section -->
-        <section id="testing" class="testing" aria-labelledby="testing-heading">
-            <div class="container">
-                <h2 id="testing-heading">Accessibility Testing</h2>
-                <div class="testing-content">
-                    <article>
-                        <h3>Manual Testing Checklist</h3>
-                        <ul>
-                            <li>Navigate entire page using <kbd>Tab</kbd> and <kbd>Shift+Tab</kbd></li>
-                            <li>Verify <code>focus</code> indicator is visible on all interactive elements</li>
-                            <li>Check that focus order is logical and intuitive</li>
-                            <li>Use browser DevTools to inspect ARIA attributes</li>
-                            <li>Test with screen reader software (NVDA, JAWS, VoiceOver)</li>
-                            <li>Zoom page to 200% and verify layout remains usable</li>
-                            <li>Check color contrast with a tool like WebAIM Contrast Checker</li>
-                        </ul>
-                    </article>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Strengths</h2>
+            <h3 style="color: #667eea; margin-top: 1.5rem;">Technical</h3>
+            <ul>
+                <li>Programming Languages: Java, Python, C, C++</li>
+                <li>Hardware Design: FPGA, Digital Logic, Assembly</li>
+                <li>Systems Programming: Memory Management, Performance Optimization</li>
+                <li>Web Development: HTML, CSS, JavaScript</li>
+            </ul>
 
-                    <article>
-                        <h3>Automated Testing Tools</h3>
-                        <ul>
-                            <li><strong>axe DevTools</strong> - Browser extension for accessibility testing</li>
-                            <li><strong>WAVE</strong> - Web accessibility evaluation tool</li>
-                            <li><strong>Lighthouse</strong> - Built into Chrome DevTools</li>
-                            <li><strong>NVDA</strong> - Free screen reader for Windows</li>
-                            <li><strong>WebAIM Contrast Checker</strong> - Color contrast validation</li>
-                            <li><strong>Keyboard Navigation Tester</strong> - Test keyboard navigation flows</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
+            <h3 style="color: #667eea; margin-top: 1.5rem;">Areas for Growth</h3>
+            <ul>
+                <li>Machine Learning & AI: Currently expanding knowledge in neural networks</li>
+                <li>Full-Stack Development: Building deeper expertise in backend frameworks</li>
+                <li>Cloud Architecture: AWS and distributed systems design</li>
+                <li>Advanced ASL: Working toward intermediate fluency</li>
+            </ul>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading">Get in Touch</h2>
-                <p>Have questions about accessibility? I'd love to hear from you!</p>
-                <div class="contact-links">
-                    <a href="https://github.com/mendelcrrll" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
-                        GitHub
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Twitter profile">
-                        Twitter
-                    </a>
-                    <a href="mailto:your-email@example.com" aria-label="Send email">
-                        Email
-                    </a>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Located in Seattle, WA | Available for opportunities and collaboration</p>
+            <div class="contact-info">
+                <div>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:mcarro5@cs.washington.edu">mcarro5@cs.washington.edu</a>
+                </div>
+                <div>
+                    <strong>Phone:</strong><br>
+                    <a href="tel:+17868282875">+1 (786) 828-2875</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2024 Accessible Web Design Portfolio. Built with accessibility in mind.</p>
-            <p>
-                <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">
-                    WCAG 2.1 Compliance (Level AA)
-                </a>
-            </p>
+    <!-- Modals for Project Details -->
+    <div id="headshotModal" class="modal" role="dialog" aria-labelledby="headshot-modal-title">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="closeModal('headshotModal')" aria-label="Close modal">&times;</button>
+            <h2 id="headshot-modal-title" style="margin-bottom: 1rem;">Menachem Carroll</h2>
+            <img src="Headshot.png" alt="Menachem Carroll full headshot" style="width: 100%; height: auto; border-radius: 8px;">
         </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
+    <div id="project1" class="modal" role="dialog" aria-labelledby="project1-title">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="closeModal('project1')" aria-label="Close modal">&times;</button>
+            <h2 id="project1-title">Mini Google Search Engine</h2>
+            <p>This project implements core search engine functionality including:</p>
+            <ul>
+                <li><strong>Web Crawling:</strong> Efficiently traversed and indexed web pages</li>
+                <li><strong>Page Ranking:</strong> Implemented PageRank algorithm for relevance scoring</li>
+                <li><strong>Query Processing:</strong> Built search query parser and matcher</li>
+                <li><strong>Indexing:</strong> Created inverted index for fast retrieval</li>
+            </ul>
+            <p><strong>Technologies:</strong> Java, Data Structures, Algorithms</p>
+            <p><strong>Key Learnings:</strong> Large-scale data processing, algorithm optimization, and distributed concepts.</p>
+        </div>
+    </div>
+
+    <div id="project2" class="modal" role="dialog" aria-labelledby="project2-title">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="closeModal('project2')" aria-label="Close modal">&times;</button>
+            <h2 id="project2-title">FPGA Flappy Bird</h2>
+            <p>A hardware-based implementation of the classic Flappy Bird game:</p>
+            <ul>
+                <li><strong>Hardware Design:</strong> Implemented using Verilog HDL on DE10-Lite FPGA</li>
+                <li><strong>Graphics Rendering:</strong> Real-time VGA output at 60 FPS</li>
+                <li><strong>Input Handling:</strong> Debounced button inputs for game control</li>
+                <li><strong>Game Logic:</strong> Collision detection and score tracking in hardware</li>
+            </ul>
+            <p><strong>Technologies:</strong> Verilog, FPGA, Digital Design, Hardware Simulation</p>
+            <p><strong>Key Learnings:</strong> Hardware-software integration, real-time systems, and hardware constraints.</p>
+        </div>
+    </div>
+
+    <div id="project3" class="modal" role="dialog" aria-labelledby="project3-title">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="closeModal('project3')" aria-label="Close modal">&times;</button>
+            <h2 id="project3-title">ASR System for CP</h2>
+            <p>An accessible speech recognition system optimized for cerebral palsy users:</p>
+            <ul>
+                <li><strong>Accuracy:</strong> High-accuracy recognition despite speech variability</li>
+                <li><strong>Customization:</strong> User-specific voice profile training</li>
+                <li><strong>Accessibility:</strong> Designed with direct input from users with disabilities</li>
+                <li><strong>Real-time Processing:</strong> Low-latency audio processing</li>
+            </ul>
+            <p><strong>Technologies:</strong> Python, Audio Processing, Machine Learning</p>
+            <p><strong>Impact:</strong> Improved digital accessibility and independence for users with speech differences.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(projectId) {
+            document.getElementById(projectId).classList.add('active');
+        }
+
+        function closeModal(projectId) {
+            document.getElementById(projectId).classList.remove('active');
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // Keyboard navigation for modals
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
