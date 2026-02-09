@@ -55,6 +55,14 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
+        .headshot-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            }
+
+
         .headshot:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
@@ -272,7 +280,17 @@
     <a class="skip-link" href="#content">Skip to main content</a>
 
     <header>
-        <img src="avatar.jpg" alt="Photo of me standing outdoors by a railing, wearing glasses and a sleeveless brown shirt, with trees and a blue sky in the background." class="headshot" onclick="openModal('headshotModal')" role="button" tabindex="0" onkeypress="if(event.key==='Enter') openModal('headshotModal')">
+        <button
+        type="button"
+        class="headshot-button"
+        aria-haspopup="dialog"
+        aria-controls="headshotModal"
+        onclick="openModal('headshotModal')">
+        <img
+            src="avatar.jpg"
+            alt="Photo of me standing outdoors by a railing, wearing glasses and a sleeveless brown shirt, with trees and a blue sky in the background. Click to activate full screen."
+            class="headshot">
+        </button>
         <div>
             <h1>Menachem Carroll</h1>
             <p>Computer Engineer | Systems Programming | Accessible Technology</p>
@@ -388,7 +406,7 @@
         <div class="modal-content">
             <button type="button" class="modal-close" onclick="closeModal('headshotModal')" aria-label="Close modal">&times;</button>
             <h2 id="headshot-modal-title" style="margin-bottom: 1rem;">Menachem Carroll</h2>
-            <img src="avatar.jpg" alt="Larger scaled photo of me Photo of me standing outdoors by a railing, wearing glasses and a sleeveless brown shirt, with trees and a blue sky in the background." style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="avatar.jpg" alt="Larger scaled photo of me standing outdoors by a railing, wearing glasses and a sleeveless brown shirt, with trees and a blue sky in the background." style="width: 100%; height: auto; border-radius: 8px;">
         </div>
     </div>
 
