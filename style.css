@@ -266,3 +266,22 @@ li {
     outline: 2px solid #667eea;
     outline-offset: 2px;
 }
+
+/* style.css */
+
+/* Default (Light) Mode Styles */
+body {
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Dark Mode Styles - applied when .dark-mode class is present on the body */
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.dark-mode header {
+    border-bottom: 1px solid #ffffff;
+}

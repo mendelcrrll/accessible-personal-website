@@ -25,6 +25,8 @@
             <h1>Menachem Carroll</h1>
             <p>Computer Engineer | Systems Programming | Accessible Technology</p>
         </div>
+        <!-- The toggle button -->
+        <button id="style-toggle">Toggle Dark Mode</button>
     </header>
 
     <nav aria-label="Main navigation">
@@ -249,6 +251,42 @@
                 });
             }
         });
+
+        // Theme
+        const toggleButton = document.getElementById('style-toggle');
+        const bodyElement = document.body;
+        const darkModeClass = 'dark-mode';
+
+        // Function to set the theme based on local storage
+        function setTheme() {
+            // Check if the user has a saved preference for dark mode
+            if (localStorage.getItem('theme') === 'dark') {
+                bodyElement.classList.add(darkModeClass);
+                toggleButton.textContent = 'Toggle Light Mode';
+            } else {
+                bodyElement.classList.remove(darkModeClass);
+                toggleButton.textContent = 'Toggle Dark Mode';
+            }
+        }
+
+        // Function to toggle the theme and save it to local storage
+        function toggleTheme() {
+            if (bodyElement.classList.contains(darkModeClass)) {
+                bodyElement.classList.remove(darkModeClass);
+                localStorage.setItem('theme', 'light'); // Save preference
+                toggleButton.textContent = 'Toggle Dark Mode';
+            } else {
+                bodyElement.classList.add(darkModeClass);
+                localStorage.setItem('theme', 'dark'); // Save preference
+                toggleButton.textContent = 'Toggle Light Mode';
+            }
+        }
+
+        // Event listener for the button click
+        toggleButton.addEventListener('click', toggleTheme);
+
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', setTheme);
     </script>
 </body>
 </html>
