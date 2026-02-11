@@ -334,15 +334,24 @@ li {
    Responsive
    ========================= */
 @media (max-width: 768px) {
+
+  /* Stack header vertically */
   header {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 2rem 1rem;
   }
 
+  /* Remove absolute positioning to prevent overlap */
   .theme-toggle {
-    transform: scale(0.85);
+    position: static;           /* IMPORTANT */
+    justify-self: center;
+    margin-top: 1rem;
+    padding: 0.25rem 0.5rem;
+    transform: none;            /* Remove scaling to avoid layout weirdness */
   }
 
+  /* Smaller toggle */
   .toggle-track {
     width: 36px;
     height: 20px;
@@ -357,6 +366,12 @@ li {
 
   .toggle-label {
     font-size: 0.8rem;
+  }
+
+  /* Slightly smaller headshot */
+  .headshot {
+    width: 220px;
+    height: 220px;
   }
 
   header h1 {
