@@ -156,10 +156,6 @@ nav {
   z-index: 50;
 }
 
-a, a:visited {
-    color: inherit;
-}
-
 nav ul {
   list-style: none;
   display: flex;
@@ -445,11 +441,13 @@ li {
 }
 
 .resume-button {
-  background: #667eea;
+  background: #4f5bd5;
   color: white;
-  border: 2px solid currentColor;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  font-weight: 600;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: background 0.3s;
 }
