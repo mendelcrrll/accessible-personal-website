@@ -384,6 +384,15 @@ li {
   color: lightskyblue; 
 }
 
+.dark-mode a:visited {
+  color: #93c5fd;
+}
+
+.dark-mode a:hover,
+.dark-mode a:focus {
+  color: #bfdbfe;
+}
+
 
 .dark-mode section {
   background: #111827;
