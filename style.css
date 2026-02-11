@@ -335,31 +335,31 @@ li {
    ========================= */
 @media (max-width: 768px) {
 
-  /* Stack header vertically */
   header {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     text-align: center;
-    padding: 2rem 1rem;
+    position: relative; /* keeps absolute positioning stable */
   }
 
-  /* Remove absolute positioning to prevent overlap */
+  /* Move toggle below content instead of top-right */
   .theme-toggle {
-    position: static;           /* IMPORTANT */
+    position: static;         /* return to normal flow */
+    grid-column: 1 / -1;
     justify-self: center;
     margin-top: 1rem;
     padding: 0.25rem 0.5rem;
-    transform: none;            /* Remove scaling to avoid layout weirdness */
   }
 
   /* Smaller toggle */
   .toggle-track {
-    width: 36px;
-    height: 20px;
+    width: 34px;
+    height: 18px;
   }
 
   .toggle-thumb {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     top: 3px;
     left: 3px;
   }
