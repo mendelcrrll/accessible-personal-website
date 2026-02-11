@@ -340,9 +340,7 @@ li {
   }
 
   .theme-toggle {
-    top: 1rem;
-    right: 1rem;
-    padding: 0.25rem 0.5rem;
+    transform: scale(0.85);
   }
 
   .toggle-track {
