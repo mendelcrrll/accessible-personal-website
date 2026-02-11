@@ -424,3 +424,21 @@ li {
   );
   color: #e5e7eb;
 }
+
+/* =========================
+   Resume Buttons
+   ========================= */
+.resume-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.resume-button {
+  background: #667eea;
+  color: white;
+  border: 2px solid currentColor;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
