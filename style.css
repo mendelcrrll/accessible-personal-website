@@ -337,41 +337,33 @@ li {
 
   header {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
     text-align: center;
-    position: relative; /* keeps absolute positioning stable */
   }
 
-  /* Move toggle below content instead of top-right */
   .theme-toggle {
-    position: static;         /* return to normal flow */
-    grid-column: 1 / -1;
-    justify-self: center;
-    margin-top: 1rem;
-    padding: 0.25rem 0.5rem;
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+
+    padding: 0.15rem 0.4rem;
+    font-size: 0.7rem;
+    border-width: 1px;
   }
 
-  /* Smaller toggle */
   .toggle-track {
-    width: 34px;
-    height: 18px;
+    width: 26px;
+    height: 14px;
   }
 
   .toggle-thumb {
-    width: 12px;
-    height: 12px;
-    top: 3px;
-    left: 3px;
+    width: 9px;
+    height: 9px;
+    top: 2.5px;
+    left: 2.5px;
   }
 
   .toggle-label {
-    font-size: 0.8rem;
-  }
-
-  /* Slightly smaller headshot */
-  .headshot {
-    width: 220px;
-    height: 220px;
+    font-size: 0.65rem;
   }
 
   header h1 {
