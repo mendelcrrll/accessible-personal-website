@@ -156,6 +156,10 @@ nav {
   z-index: 50;
 }
 
+a, a:visited {
+    color: inherit;
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -380,6 +384,11 @@ li {
   color: #e5e7eb;
 }
 
+.dark-mode a:link { 
+  color: lightskyblue; 
+}
+
+
 .dark-mode section {
   background: #111827;
   color: #e5e7eb;
@@ -424,6 +433,8 @@ li {
   );
   color: #e5e7eb;
 }
+
+
 
 /* =========================
    Resume Buttons
