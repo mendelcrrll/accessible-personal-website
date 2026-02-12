@@ -462,7 +462,25 @@ li {
   color: #e5e7eb;
 }
 
+/* =========================
+   Dark Mode - Modals
+   ========================= */
 
+.dark-mode .modal-content {
+  background-color: #1e293b;   /* dark slate */
+  color: #e5e7eb;              /* light text */
+}
+
+.dark-mode .modal-close {
+  color: #93c5fd;
+}
+
+.dark-mode .modal-close:hover,
+.dark-mode .modal-close:focus {
+  color: #bfdbfe;
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
 
 /* =========================
    Resume Buttons

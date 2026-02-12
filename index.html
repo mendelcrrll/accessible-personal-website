@@ -96,24 +96,52 @@
             <h2>Projects</h2>
             <div class="grid">
                 <div class="project-card">
-                    <h3>Mini Google Search Engine</h3>
+                    <h3 id="project1-card-title">Mini Google Search Engine</h3>
                     <p>Built a scalable search engine prototype implementing core ranking algorithms and indexing techniques.</p>
-                    <button type="button" onclick="openModal('project1')">Learn More</button>
+                    <button
+                    type="button"
+                    onclick="openModal('project1')"
+                    aria-labelledby="project1-card-title project1-button-text">
+                    <span id="project1-button-text">Learn More</span>
+                    </button>
                 </div>
                 <div class="project-card">
-                    <h3>FPGA Flappy Bird</h3>
-                    <p>Implemented classic game on FPGA using hardware description language and real-time graphics rendering.</p>
-                    <button type="button" onclick="openModal('project2')">Learn More</button>
+                    <h3 id="project2-card-title">FPGA Flappy Bird</h3>
+                    <p>
+                        Implemented classic game on FPGA using hardware description language 
+                        and real-time graphics rendering.
+                    </p>
+                    <button
+                        type="button"
+                        onclick="openModal('project2')"
+                        aria-labelledby="project2-card-title">
+                        Learn More
+                    </button>
                 </div>
                 <div class="project-card">
-                    <h3>ASR System for CP</h3>
-                    <p>Developed automatic speech recognition system optimized for cerebral palsy users, focusing on accessibility.</p>
-                    <button type="button" onclick="openModal('project3')">Learn More</button>
+                    <h3 id="project3-card-title">ASR System for CP</h3>
+                    <p>
+                        Developing automatic speech recognition system optimized for cerebral palsy users, focusing on accessibility.
+                    </p>
+                    <button
+                        type="button"
+                        onclick="openModal('project3')"
+                        aria-labelledby="project3-card-title">
+                        Learn More
+                    </button>
                 </div>
+
                 <div class="project-card">
-                    <h3>Multi-Client Chatroom Application</h3>
-                    <p>A C++ multi-threaded chatroom application that allows multiple users to connect, authenticate, and chat in real-time.</p>
-                    <button type="button" onclick="openModal('project4')">Learn More</button>
+                    <h3 id="project4-card-title">Multi-Client Chatroom Application</h3>
+                    <p>
+                        A C++ multi-threaded chatroom application that allows multiple users to connect, authenticate, and chat in real-time.
+                    </p>
+                    <button
+                        type="button"
+                        onclick="openModal('project4')"
+                        aria-labelledby="project4-card-title">
+                        Learn More
+                    </button>
                 </div>
             </div>
         </section>
